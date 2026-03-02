@@ -3,6 +3,11 @@ import Layout from "@/layouts/Layout.astro";
 import { type Lang, LOCALES, DEFAULT_LOCALE } from "@/i18n";
 import vi from "@/i18n/vi.json";
 import en from "@/i18n/en.json";
+import auditAndAssuranceImage from "@/assets/images/service-1.jpg";
+import businessServicesOutsourcingImage from "@/assets/images/service-2.jpg";
+import taxServicesImage from "@/assets/images/service-3.png";
+import advisoryServicesImage from "@/assets/images/service-4.png";
+import legalServicesImage from "@/assets/images/service-5.png";
 
 type Service = {
   slug: string;
@@ -33,9 +38,61 @@ const service =
   allServices.find((item) => item.slug === fullSlug) ?? allServices[0];
 
 const pageTitle = service ? `${service.title} - NHC` : "Services - NHC";
+const serviceImages = [
+  {
+    slug: "services/audit-and-assurance",
+    image: auditAndAssuranceImage.src,
+  },
+  {
+    slug: "services/business-services-outsourcing",
+    image: businessServicesOutsourcingImage.src,
+  },
+  {
+    slug: "services/tax-services",
+    image: taxServicesImage.src,
+  },
+  {
+    slug: "services/advisory-services",
+    image: advisoryServicesImage.src,
+  },
+  {
+    slug: "services/legal-services",
+    image: legalServicesImage.src,
+  },
+];
+
+const serviceImage = serviceImages.find(
+  (item) => item.slug === fullSlug,
+)?.image;
 ---
 
 <Layout lang={currentLang} title={pageTitle} description={service.description}>
+  <section class="hero-widget hero-widget--hero hero-widget--partial">
+    <div class="hero-widget__gradient-bg hero-widget__gradient-bg--partial">
+    </div><div class="hero-widget__left-section">
+      <div class="hero-widget__left-section-white-angle-bg"></div><h1
+        class="hero-widget__left-section-title"
+      >
+        {service.title}
+      </h1>
+    </div><div
+      class="hero-widget__right-section hero-widget__right-section--partial"
+    >
+      <img
+        class="hero-widget__right-section-img hidden md:block"
+        src={serviceImage}
+        fetchpriority="high"
+        style="object-fit:cover;object-position:top right"
+        alt={service.title}
+      /><img
+        class="hero-widget__right-section-img md:hidden"
+        src={serviceImage}
+        fetchpriority="high"
+        style="object-fit:cover;object-position:top right"
+        alt={service.title}
+      />
+    </div>
+  </section>
   <section class="service-detail">
     <div class="service-detail__container">
       <h1 class="service-detail__title">{service.title}</h1>
@@ -81,4 +138,3 @@ const pageTitle = service ? `${service.title} - NHC` : "Services - NHC";
     }
   }
 </style>
-
