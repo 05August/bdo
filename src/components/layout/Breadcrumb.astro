@@ -1,0 +1,121 @@
+---
+import { t, type Lang } from "@/i18n";
+
+const base = (l: Lang, path = "") => (path ? `/${l}/${path}` : `/${l}`);
+interface Props {
+  lang: Lang;
+  currentPath: string;
+  title: string;
+}
+
+const { lang, title } = Astro.props;
+---
+
+<div class="breadcrumbs">
+  <ul class="breadcrumbs__list">
+    <li class="breadcrumbs__list-item">
+      <div class="px-2 flex">
+        <svg
+          stroke="currentColor"
+          fill="none"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+          class="breadcrumbs__item-icon"
+          height="18"
+          width="18"
+          xmlns="http://www.w3.org/2000/svg"
+          ><path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M15 19l-7-7 7-7"></path></svg
+        >
+      </div><div class="pt-[1px] flex">
+        <a
+          href={base(lang)}
+          target=""
+          title=""
+          class="animated-link inline text-lighter-black hover:text-lighter-black"
+          ><span class="hover-underline">{t(lang, "nav.home")}</span></a
+        >
+      </div>
+    </li><li class="breadcrumbs__list-item">
+      <div class="px-2 hidden lg:flex">
+        <svg
+          stroke="currentColor"
+          fill="none"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+          class="breadcrumbs__item-icon"
+          height="18"
+          width="18"
+          xmlns="http://www.w3.org/2000/svg"
+          ><path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M15 19l-7-7 7-7"></path></svg
+        >
+      </div><div class="breadcrumbs__last-list-item-container">
+        <span class="breadcrumbs__last-list-item">{title}</span>
+      </div>
+    </li>
+  </ul>
+</div>
+
+<style>
+  .breadcrumbs {
+    background: #fafbfd;
+    display: flex;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+    width: 100%;
+    --tw-text-opacity: 1;
+    color: rgb(64 64 64 / var(--tw-text-opacity));
+  }
+
+  .breadcrumbs__list {
+    display: flex;
+    flex-direction: row;
+    font-size: 0.75rem;
+    line-height: 1rem;
+  }
+
+  .breadcrumbs__list-item {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    line-height: 1.25rem;
+  }
+
+  .breadcrumbs__list-item:first-child{
+    padding-left: 0.5rem;
+  }
+
+  @media (min-width: 976px) {
+    .breadcrumbs__list-item:first-child{
+      padding-left: 3.25rem;
+    }
+  }
+
+  .breadcrumbs__item-icon {
+    stroke: #333;
+  }
+
+  .breadcrumbs__last-list-item {
+    display: block;
+    height: 22px;
+  }
+
+  .breadcrumbs__last-list-item-container {
+    align-items: center;
+    display: none;
+    padding-top: 1px;
+  }
+
+  @media (min-width: 976px) {
+    .breadcrumbs__last-list-item-container {
+      display: flex;
+    }
+  }
+</style>

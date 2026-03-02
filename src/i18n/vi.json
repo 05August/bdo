@@ -1,0 +1,110 @@
+{
+  "nav": {
+    "home": "Trang chủ",
+    "services": "Dịch Vụ",
+    "industries": "Lĩnh Vực, Ngành Nghề",
+    "about": "Giới Thiệu",
+    "contact": "LIÊN HỆ",
+    "privacy-policy": "Privacy Policy"
+  },
+  "footer": {
+    "email-sign-up": "Đăng ký email",
+    "subscribe": "Đăng ký",
+    "copyright": "Bản quyền © 2026. Xem Điều khoản và Điều kiện cho thêm thông tin.",
+    "subscribe-content": "Chúng tôi tin rằng dịch vụ khách hàng tốt nhất bắt đầu với mối quan hệ tốt. Đăng ký để nhận các bản cập nhật mới nhất."
+  },
+  "home": {
+    "hero": {
+      "title": "Chúng tôi đang mang BDO vào Việt Nam, đối tác đã sẵn sàng.",
+      "description": "Những người biết, biết BDO",
+      "button": "Tìm hiểu thêm"
+    }
+  },
+  "about": {
+    "heroTitle": "NHC tại Việt Nam",
+    "body": "BDO tại Việt Nam gồm các công ty thành viên của BDO Quốc tế - mạng lưới các công ty chuyên nghiệp lớn thứ năm trên thế giới, cung cấp các dịch vụ kiểm toán, tư vấn và thuế cho các doanh nghiệp từ các tập đoàn đa quốc gia lâu đời đến các tổ chức đang phát triển, dù là công ty niêm yết hay tư nhân. Với 1.800 văn phòng tại 166 quốc gia, BDO Quốc tế có đội ngũ nhân viên hơn 119.611 người.\n\nNgày 1 tháng 10 năm 2012, hơn 150 nhân sự từ một số công ty tại Việt Nam đã tập hợp tạo thành công ty mới của BDO tại Việt Nam với các văn phòng đặt tại Hà Nội và Thành phố Hồ Chí Minh. Sự kiện này đánh dấu bước mở rộng toàn diện phạm vi dịch vụ cung cấp bởi BDO tại Việt Nam như dịch vụ kiểm toán, thuế, kế toán, dịch vụ doanh nghiệp thuê ngoài, dịch vụ tư vấn và dịch vụ pháp lý do đội ngũ chuyên gia được đánh giá cao trong ngành của BDO tại Việt Nam thực hiện.\n\nChúng tôi luôn tư duy toàn cầu và hoạt động phù hợp với từng địa phương. Mỗi thị trường đều mang những nét đặc thù riêng, doanh nghiệp hoạt động tại đó cần được tư vấn bởi các chuyên gia địa phương am hiểu sâu sắc về môi trường kinh doanh và văn hóa bản địa nhằm giúp doanh nghiệp hoạt động hiệu quả hơn. Với lợi thế của việc tận dụng nguồn tri thức và kinh nghiệm phong phú từ các công ty thành viên khác trong mạng lưới toàn cầu của BDO, chúng tôi luôn đồng hành cùng doanh nghiệp, tư vấn các giải pháp phù hợp đáp ứng nhu cầu của doanh nghiệp trên các lĩnh vực và thị trường khác nhau."
+  },
+  "services": {
+    "items": [
+      {
+        "slug": "services/audit-and-assurance",
+        "title": "Kiểm Toán Và Các Dịch Vụ Đảm Bảo",
+        "description": "Là thành viên của mạng lưới dịch vụ chuyên ngành lớn nhất thế giới, chúng tôi khai thác nguồn lực phong phú trên toàn cầu kết hợp với hiểu biết sâu sắc về hoạt động kinh doanh trong nước cũng như các quy định của quốc gia. Với đội ngũ nhân sự có trình độ chuyên môn cao, với bề dày kinh nghiệm cung cấp dịch vụ cho các khách hàng có loại hình kinh doanh đa dạng, thuộc nhiều lĩnh vực, ngành nghề khác nhau, chúng tôi cam kết mang đến giá trị vượt trội cho mọi khách hàng."
+      },
+      {
+        "slug": "services/business-services-outsourcing",
+        "title": "Dịch Vụ Thuê Ngoài (BSO)",
+        "description": "Dịch vụ Thuê ngoài của BDO sẽ cung cấp cho khách hàng nhiều dịch vụ đa dạng như kế toán, tư vấn và các dịch vụ tuân thủ nhằm hỗ trợ sự phát triển và đáp ứng các nhu cầu khác nhau của doanh nghiệp tại Việt Nam và trên toàn thế giới."
+      },
+      {
+        "slug": "services/tax-services",
+        "title": "Dịch Vụ Thuế",
+        "description": "Các chuyên gia thuế giàu kinh nghiệm của BDO hiểu rõ rằng dịch vụ thuế mang lại những giá trị gia tăng cho doanh nghiệp. Trong bối cảnh các vấn đề kinh doanh ngày càng phức tạp, sự thay đổi, cập nhật thường xuyên về quy định pháp luật ngày càng nhiều, các yêu cầu tuân thủ đặt ra đối với doanh nghiệp ngày càng cao trong lĩnh vực thuế, việc để các chuyên gia thuế của chúng tôi hỗ trợ doanh nghiệp là điều cần thiết. Đội ngũ chuyên gia của chúng tôi có chuyên môn toàn diện trong các lĩnh vực thuế và kinh nghiệm sâu rộng trong nhiều ngành nghề kinh doanh khác nhau. Cũng giống như doanh nghiệp của bạn hoạt động trên phạm vi toàn cầu, dịch vụ mà chúng tôi cung cấp cho khách hàng cũng vậy."
+      },
+      {
+        "slug": "services/advisory-services",
+        "title": "Dịch Vụ Tư Vấn",
+        "description": "Với một đội ngũ chuyên viên Tư vấn đa ngành đến từ nhiều lĩnh vực khác nhau, BDO sẽ cung cấp các dịch vụ được cá nhân hóa cho mỗi khách hàng nhằm đưa ra giải pháp tốt nhất cho từng nhu cầu riêng biệt của các khách hàng khác nhau. Dịch vụ Tư vấn của BDO bao gồm nhiều loại hình dịch vụ đa dạng từ cơ bản đến nâng cao như dịch vụ tư vấn giao dịch, tư vấn tài chính doanh nghiệp, tư vấn rủi ro, tư vấn về tái cấu trúc và công nghệ. Chúng tôi hỗ trợ khách hàng vượt qua các thách thức, nắm bắt các cơ hội bất kể quy mô của doanh nghiệp là lớn hay nhỏ."
+      },
+      {
+        "slug": "services/legal-services",
+        "title": "Dịch Vụ Pháp Lý",
+        "description": "Công ty TNHH BDO Legal Việt Nam là công ty luật độc lập thuộc BDO tại Việt Nam. Là một công ty luật, BDO Legal Việt Nam cung cấp nhiều loại dịch vụ pháp lý chuyên nghiệp cho khách hàng trong hoạt động đầu tư và kinh doanh tại Việt Nam."
+      }
+    ]
+  },
+  "industries": {
+    "items": [
+      {
+        "slug": "industries/real-estate-construction",
+        "title": "Ngành Bất Động Sản & Xây Dựng",
+        "description": "Ngành Bất Động Sản & Xây Dựng là một ngành nghề kinh doanh quan trọng trong nền kinh tế Việt Nam. Ngành này bao gồm các hoạt động liên quan đến bất động sản, xây dựng và phát triển bất động sản."
+      },
+      {
+        "slug": "industries/manufacturing",
+        "title": "Ngành Sản Xuất",
+        "description": "Ngành Sản Xuất là một ngành nghề kinh doanh quan trọng trong nền kinh tế Việt Nam. Ngành này bao gồm các hoạt động liên quan đến sản xuất và sản xuất sản phẩm."
+      },
+      {
+        "slug": "industries/consumer-business",
+        "title": "Ngành Hàng Tiêu Dùng",
+        "description": "Ngành Hàng Tiêu Dùng là một ngành nghề kinh doanh quan trọng trong nền kinh tế Việt Nam. Ngành này bao gồm các hoạt động liên quan đến hàng tiêu dùng."
+      },
+      {
+        "slug": "industries/technology-media-telecom",
+        "title": "Ngành Công Nghệ, Truyền Thông & Viễn Thông",
+        "description": "Ngành Công Nghệ, Truyền Thông & Viễn Thông là một ngành nghề kinh doanh quan trọng trong nền kinh tế Việt Nam. Ngành này bao gồm các hoạt động liên quan đến công nghệ, truyền thông và viễn thông."
+      },
+      {
+        "slug": "industries/professional-services",
+        "title": "Dịch Vụ Chuyên Ngành",
+        "description": "Dịch Vụ Chuyên Ngành là một ngành nghề kinh doanh quan trọng trong nền kinh tế Việt Nam. Ngành này bao gồm các hoạt động liên quan đến dịch vụ chuyên ngành."
+      },
+      {
+        "slug": "industries/food-agri-business",
+        "title": "Ngành Thực Phẩm & Kinh Doanh Nông Nghiệp",
+        "description": "Ngành Thực Phẩm & Kinh Doanh Nông Nghiệp là một ngành nghề kinh doanh quan trọng trong nền kinh tế Việt Nam. Ngành này bao gồm các hoạt động liên quan đến thực phẩm và kinh doanh nông nghiệp."
+      },
+      {
+        "slug": "industries/non-profit",
+        "title": "Phi Lợi Nhuận",
+        "description": "Phi Lợi Nhuận là một ngành nghề kinh doanh quan trọng trong nền kinh tế Việt Nam. Ngành này bao gồm các hoạt động liên quan đến phi lợi nhuận."
+      },
+      {
+        "slug": "industries/natural-resources",
+        "title": "Ngành Khai Thác Tài Nguyên Thiên Nhiên",
+        "description": "Ngành Khai Thác Tài Nguyên Thiên Nhiên là một ngành nghề kinh doanh quan trọng trong nền kinh tế Việt Nam. Ngành này bao gồm các hoạt động liên quan đến khai thác tài nguyên thiên nhiên."
+      },
+      {
+        "slug": "industries/healthcare",
+        "title": "Ngành Y Tế",
+        "description": "Ngành Y Tế là một ngành nghề kinh doanh quan trọng trong nền kinh tế Việt Nam. Ngành này bao gồm các hoạt động liên quan đến y tế."
+      }
+    ]
+  },
+  "contact": {
+    "heroTitle": "Liên Hệ",
+    "body": "BDO tại Thành phố Hồ Chí Minh:\n11th Floor, 60 Nguyen Dinh Chieu Street, District 1, Ho Chi Minh City, Viet Nam\nOffice: +84 (0) 28 39110033\nFax: +84 (0) 28 39117439\nEmail: bdo@bdo.vn\n\nBDO tại Hà Nội:\n20th floor, ICON 4 Tower\n243A De La Thanh Street, Dong Da District, Ha Noi, Viet Nam\nOffice: +84 (0) 24 37833911/12/13\nFax: +84 (0) 24 37833914\nEmail: bdo@bdo.vn\n\nBDO Legal Vietnam LLC\nUnit 4.28, 4th Floor, 19-21 Nguyen Van Troi St.,\nPhu Nhuan District, Ho Chi Minh City,\nViet Nam\nOffice: +84 (0) 28 36227792\nFax: +84 (0) 28 36227791"
+  },
+  "read-more": "Tìm hiểu thêm"
+}

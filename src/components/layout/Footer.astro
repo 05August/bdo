@@ -1,0 +1,381 @@
+---
+import { t, type Lang } from "@/i18n";
+import logo from "@/assets/images/logo.png";
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+
+const pathname = Astro.url.pathname;
+const pathWithoutLocale = pathname.replace(/^\/[^/]+/, "") || "";
+const currentPath = pathWithoutLocale.replace(/^\//, "") || "";
+
+const base = (l: Lang, path = "") => (path ? `/${l}/${path}` : `/${l}`);
+const urlVi = base("vi", currentPath);
+const urlEn = base("en", currentPath);
+const urlHome = base(lang);
+const urlServices = base(lang, "services");
+const urlIndustries = base(lang, "industries");
+const urlAbout = base(lang, "about");
+const urlContact = base(lang, "contact");
+---
+
+<footer class="footer" data-ktc-search-exclude="true" data-reactroot="">
+  <div class="footer__container container">
+    <div class="footer__left-container">
+      <ul class="footer__menu">
+        <li class="footer__menu-item">
+          <div class="">
+            <a
+              href={urlContact}
+              target=""
+              title=""
+              class="animated-link inline text-white hover:text-white"
+              ><span class="hover-underline">{t(lang, "nav.contact")}</span></a
+            >
+          </div>
+        </li><li class="footer__menu-item">
+          <div class="">
+            <a
+              href={urlAbout}
+              target=""
+              title=""
+              class="animated-link inline text-white hover:text-white"
+              ><span class="hover-underline">{t(lang, "nav.about")}</span></a
+            >
+          </div>
+        </li><li class="footer__menu-item">
+          <div class="">
+            <a
+              href="#"
+              target=""
+              title=""
+              class="animated-link inline text-white hover:text-white"
+              ><span class="hover-underline"
+                >{t(lang, "nav.privacy-policy")}</span
+              ></a
+            >
+          </div>
+        </li><li class="footer__menu-item">
+          <div class="">
+            <a
+              href={urlHome}
+              target=""
+              title=""
+              class="animated-link inline text-white hover:text-white"
+              ><span class="hover-underline">{t(lang, "nav.home")}</span></a
+            >
+          </div>
+        </li>
+      </ul>
+    </div><div class="footer__right-container">
+      <div class="footer__subscribe-title">
+        {t(lang, "footer.email-sign-up")}
+      </div><div class="footer__subscribe-content">
+        {t(lang, "footer.subscribe-content")}
+      </div><a role="button" class="btn" href="#" target="_self" title=""
+        ><span class="btn-text"
+          ><span class="">{t(lang, "footer.subscribe")}</span></span
+        ></a
+      ><div class="footer__social-icons">
+        <ul class="footer__social-menu">
+          <li class="footer__social-item">
+            <a
+              class="footer__social-link"
+              href="#"
+              target="_blank"
+              title="BDO in Vietnam (Opens in a new window/tab)"
+              aria-label="BDO in Vietnam"
+              ><svg
+                width="48"
+                height="48"
+                viewBox="0 0 48 48"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                ><path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M4 24C4 12.9543 12.9543 4 24 4C35.0457 4 44 12.9543 44 24C44 35.0457 35.0457 44 24 44C12.9543 44 4 35.0457 4 24Z"
+                  fill="#404040"></path><path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M25.4183 35.0928V24.2118H28.4219L28.82 20.4621H25.4183L25.4234 18.5853C25.4234 17.6074 25.5163 17.0833 26.921 17.0833H28.7987V13.3333H25.7946C22.1863 13.3333 20.9162 15.1522 20.9162 18.2112V20.4625H18.667V24.2122H20.9162V35.0928H25.4183Z"
+                  fill="#E7E7E7"></path></svg
+              ><span class="sr-only">Opens in a new window/tab</span></a
+            >
+          </li><li class="footer__social-item">
+            <a
+              class="footer__social-link"
+              href="#"
+              target="_blank"
+              title="BDO in Vietnam (Opens in a new window/tab)"
+              aria-label="BDO in Vietnam"
+              ><svg
+                width="48"
+                height="48"
+                viewBox="0 0 48 48"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                ><path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M4 24C4 12.9543 12.9543 4 24 4C35.0457 4 44 12.9543 44 24C44 35.0457 35.0457 44 24 44C12.9543 44 4 35.0457 4 24Z"
+                  fill="#404040"></path><path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M18.134 20.5649H13.6016V34.183H18.134V20.5649Z"
+                  fill="#E7E7E7"></path><path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M18.432 16.3522C18.4026 15.017 17.4477 14 15.8972 14C14.3467 14 13.333 15.017 13.333 16.3522C13.333 17.6598 14.3167 18.7061 15.8384 18.7061H15.8673C17.4477 18.7061 18.432 17.6598 18.432 16.3522Z"
+                  fill="#E7E7E7"></path><path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M34.4795 26.3748C34.4795 22.1919 32.2435 20.2451 29.2609 20.2451C26.8545 20.2451 25.7771 21.5669 25.1756 22.4941V20.5653H20.6426C20.7023 21.8431 20.6426 34.1833 20.6426 34.1833H25.1756V26.5779C25.1756 26.1709 25.205 25.7649 25.3248 25.4735C25.6524 24.6604 26.3982 23.8185 27.6504 23.8185C29.2912 23.8185 29.947 25.0673 29.947 26.8973V34.183H34.4793L34.4795 26.3748Z"
+                  fill="#E7E7E7"></path></svg
+              ><span class="sr-only">Opens in a new window/tab</span></a
+            >
+          </li><li class="footer__social-item">
+            <a
+              class="footer__social-link"
+              href="#"
+              target="_blank"
+              title="Our BDO Network (Opens in a new window/tab)"
+              aria-label="Our BDO Network"
+              ><svg
+                width="48"
+                height="48"
+                viewBox="0 0 48 48"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                ><path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M4 24C4 12.9543 12.9543 4 24 4C35.0457 4 44 12.9543 44 24C44 35.0457 35.0457 44 24 44C12.9543 44 4 35.0457 4 24Z"
+                  fill="#404040"></path><path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M35.1999 19.4514C35.1999 19.4514 34.9763 17.8839 34.2913 17.1936C33.422 16.2872 32.4477 16.2829 32.0013 16.2303C28.8027 16 24.0049 16 24.0049 16H23.9949C23.9949 16 19.197 16 15.9984 16.2303C15.5513 16.2829 14.5777 16.2872 13.7077 17.1936C13.0227 17.8839 12.7999 19.4514 12.7999 19.4514C12.7999 19.4514 12.5713 21.2926 12.5713 23.1331V24.8591C12.5713 26.7003 12.7999 28.5408 12.7999 28.5408C12.7999 28.5408 13.0227 30.1083 13.7077 30.7986C14.5777 31.705 15.7199 31.6765 16.2284 31.7711C18.057 31.946 23.9999 32 23.9999 32C23.9999 32 28.8027 31.9929 32.0013 31.7626C32.4477 31.7092 33.422 31.705 34.2913 30.7986C34.9763 30.1083 35.1999 28.5408 35.1999 28.5408C35.1999 28.5408 35.4284 26.7003 35.4284 24.8591V23.1331C35.4284 21.2926 35.1999 19.4514 35.1999 19.4514Z"
+                  fill="#E7E7E7"></path><path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M21.7147 27.4287L21.7139 20.5715L28.571 24.0119L21.7147 27.4287Z"
+                  fill="#404040"></path></svg
+              ><span class="sr-only">Opens in a new window/tab</span></a
+            >
+          </li>
+        </ul>
+      </div><div class="footer__copyright">
+        {t(lang, "footer.copyright")}
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    display: flex;
+    position: relative;
+    width: 100%;
+    z-index: 10;
+    --tw-bg-opacity: 1;
+    background-color: rgb(51 51 51 / var(--tw-bg-opacity));
+    --tw-text-opacity: 1;
+    color: rgb(255 255 255 / var(--tw-text-opacity));
+  }
+
+  .footer__wrapper {
+    margin-top: auto;
+  }
+
+  @media print {
+    .footer {
+      display: block;
+    }
+  }
+
+  .footer__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 5rem 1rem 1.25rem;
+  }
+
+  @media (min-width: 976px) {
+    .footer__container {
+      flex-direction: row;
+      padding: 5rem 11rem;
+    }
+  }
+
+  .footer__left-container,
+  .footer__right-container {
+    display: flex;
+    flex: 1 1 0%;
+    width: 100%;
+  }
+
+  .footer__left-container {
+    justify-content: flex-start;
+  }
+
+  @media (min-width: 976px) {
+    .footer__left-container {
+      justify-content: flex-end;
+    }
+  }
+
+  .footer__right-container {
+    flex-direction: column;
+    font-size: 0.875rem;
+    gap: 1.5rem;
+    line-height: 1.25rem;
+  }
+
+  .footer__menu {
+    align-content: baseline;
+    display: grid;
+    flex-direction: column;
+    font-size: 1rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    line-height: 1.5rem;
+    list-style-type: none;
+    margin: 0;
+    max-width: 32rem;
+    padding: 0 0 1.5rem;
+    width: 100%;
+  }
+
+  @media print {
+    .footer__menu {
+      display: block;
+    }
+  }
+
+  .footer__menu-item {
+    padding-bottom: 1rem;
+    padding-left: 0.375rem;
+    padding-right: 0.375rem;
+    word-break: break-word;
+  }
+
+  .footer__menu-item,
+  .footer__menu-link {
+    align-items: center;
+    display: flex;
+  }
+
+  .footer__menu-link {
+    cursor: pointer;
+    --tw-text-opacity: 1;
+    color: rgb(255 255 255 / var(--tw-text-opacity));
+    text-decoration-line: none;
+  }
+
+  .footer__menu-icon {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+
+  .footer__subscribe-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    line-height: 1.75rem;
+  }
+
+  @media (min-width: 976px) {
+    .footer__subscribe-title {
+      font-size: 1.5rem;
+      line-height: 2rem;
+    }
+  }
+
+  .footer__subscribe-link {
+    text-decoration-line: none;
+  }
+
+  .footer__social-icons {
+    overflow-x: auto;
+  }
+
+  @media (min-width: 976px) {
+    .footer__social-icons {
+      overflow: hidden;
+    }
+  }
+
+  .footer__social-menu {
+    display: flex;
+    gap: 0.5rem;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  @media print {
+    .footer__social-menu {
+      overflow: hidden;
+    }
+  }
+
+  .footer__social-link .custom-icon__container,
+  .footer__social-link svg path {
+    transition-duration: 0.3s;
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-timing-function: linear;
+  }
+
+  .footer__social-link:hover svg path[fill="#404040"] {
+    fill: #e7e7e7;
+  }
+
+  .footer__social-link:hover svg path[fill="#E7E7E7"] {
+    fill: #404040;
+  }
+
+  .footer__social-link .custom-icon__container {
+    align-items: center;
+    border-radius: 9999px;
+    display: flex;
+    height: 2.5rem;
+    justify-content: center;
+    margin: 0.25rem;
+    width: 2.5rem;
+    --tw-bg-opacity: 1;
+    background-color: rgb(64 64 64 / var(--tw-bg-opacity));
+    padding: 0.5rem;
+  }
+
+  .footer__social-link .custom-icon__container:hover {
+    --tw-bg-opacity: 1;
+    background-color: rgb(231 231 231 / var(--tw-bg-opacity));
+  }
+
+  .footer__social-link .custom-icon__container svg path[stroke] {
+    stroke: #e7e7e7;
+  }
+
+  .footer__social-link .custom-icon__container svg :not(path[stroke]),
+  .footer__social-link .custom-icon__container svg path[fill] {
+    fill: #e7e7e7;
+  }
+
+  .footer__social-link .custom-icon__container:hover svg path[stroke] {
+    stroke: #404040;
+  }
+
+  .footer__social-link .custom-icon__container:hover svg :not(path[stroke]),
+  .footer__social-link .custom-icon__container:hover svg path[fill] {
+    fill: #404040;
+  }
+
+  .footer__copyright {
+    font-size: 0.75rem;
+    line-height: 1rem;
+    overflow-wrap: break-word;
+    white-space: pre-wrap;
+  }
+</style>

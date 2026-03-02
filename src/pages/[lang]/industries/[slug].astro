@@ -1,0 +1,84 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { type Lang, LOCALES, DEFAULT_LOCALE } from "@/i18n";
+import vi from "@/i18n/vi.json";
+import en from "@/i18n/en.json";
+
+type Industry = {
+  slug: string;
+  title: string;
+  description: string;
+};
+
+export function getStaticPaths() {
+  return LOCALES.flatMap((lang) => {
+    const data = lang === "vi" ? (vi as any) : (en as any);
+    const items = (data.industries?.items as Industry[]) ?? [];
+    return items.map((industry) => ({
+      params: {
+        lang,
+        slug: industry.slug.replace(/^industries\//, ""),
+      },
+    }));
+  });
+}
+
+const { lang, slug } = Astro.params;
+const currentLang = (lang ?? DEFAULT_LOCALE) as Lang;
+
+const currentData = currentLang === "vi" ? (vi as any) : (en as any);
+const allIndustries = (currentData.industries?.items as Industry[]) ?? [];
+const fullSlug = `industries/${slug}`;
+const industry =
+  allIndustries.find((item) => item.slug === fullSlug) ?? allIndustries[0];
+
+const pageTitle = industry ? `${industry.title} - NHC` : "Industries - NHC";
+---
+
+<Layout lang={currentLang} title={pageTitle} description={industry.description}>
+  <section class="industry-detail">
+    <div class="industry-detail__container">
+      <h1 class="industry-detail__title">{industry.title}</h1>
+      <p class="industry-detail__description">
+        {industry.description}
+      </p>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .industry-detail {
+    padding: 3rem 1.5rem;
+  }
+
+  .industry-detail__container {
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  .industry-detail__title {
+    font-size: 2rem;
+    line-height: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: #333;
+  }
+
+  .industry-detail__description {
+    font-size: 1rem;
+    line-height: 1.75rem;
+    color: #444;
+    white-space: pre-line;
+  }
+
+  @media (min-width: 976px) {
+    .industry-detail {
+      padding: 4rem 2rem 5rem;
+    }
+
+    .industry-detail__title {
+      font-size: 2.25rem;
+      line-height: 2.75rem;
+    }
+  }
+</style>
+

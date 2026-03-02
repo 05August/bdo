@@ -1,0 +1,84 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { type Lang, LOCALES, DEFAULT_LOCALE } from "@/i18n";
+import vi from "@/i18n/vi.json";
+import en from "@/i18n/en.json";
+
+type Service = {
+  slug: string;
+  title: string;
+  description: string;
+};
+
+export function getStaticPaths() {
+  return LOCALES.flatMap((lang) => {
+    const data = lang === "vi" ? (vi as any) : (en as any);
+    const items = (data.services?.items as Service[]) ?? [];
+    return items.map((service) => ({
+      params: {
+        lang,
+        slug: service.slug.replace(/^services\//, ""),
+      },
+    }));
+  });
+}
+
+const { lang, slug } = Astro.params;
+const currentLang = (lang ?? DEFAULT_LOCALE) as Lang;
+
+const currentData = currentLang === "vi" ? (vi as any) : (en as any);
+const allServices = (currentData.services?.items as Service[]) ?? [];
+const fullSlug = `services/${slug}`;
+const service =
+  allServices.find((item) => item.slug === fullSlug) ?? allServices[0];
+
+const pageTitle = service ? `${service.title} - NHC` : "Services - NHC";
+---
+
+<Layout lang={currentLang} title={pageTitle} description={service.description}>
+  <section class="service-detail">
+    <div class="service-detail__container">
+      <h1 class="service-detail__title">{service.title}</h1>
+      <p class="service-detail__description">
+        {service.description}
+      </p>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .service-detail {
+    padding: 3rem 1.5rem;
+  }
+
+  .service-detail__container {
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  .service-detail__title {
+    font-size: 2rem;
+    line-height: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: #333;
+  }
+
+  .service-detail__description {
+    font-size: 1rem;
+    line-height: 1.75rem;
+    color: #444;
+    white-space: pre-line;
+  }
+
+  @media (min-width: 976px) {
+    .service-detail {
+      padding: 4rem 2rem 5rem;
+    }
+
+    .service-detail__title {
+      font-size: 2.25rem;
+      line-height: 2.75rem;
+    }
+  }
+</style>
+

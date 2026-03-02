@@ -1,0 +1,63 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { t, type Lang, LOCALES, DEFAULT_LOCALE } from "@/i18n";
+import halongImage from "@/assets/images/halong.jpg";
+
+export function getStaticPaths() {
+  return LOCALES.map((lang) => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params;
+const currentLang = (lang ?? DEFAULT_LOCALE) as Lang;
+
+const pageTitle = currentLang === "vi" ? "Giới Thiệu - NHC" : "About - NHC";
+---
+
+<Layout lang={currentLang} title={pageTitle} description={pageTitle}>
+  <section class="hero-widget hero-widget--hero hero-widget--partial">
+    <div class="hero-widget__gradient-bg hero-widget__gradient-bg--partial">
+    </div>
+    <div class="hero-widget__left-section">
+      <div class="hero-widget__left-section-white-angle-bg"></div>
+      <h1 class="hero-widget__left-section-title">
+        {t(currentLang, "about.heroTitle")}
+      </h1>
+    </div>
+    <div
+      class="hero-widget__right-section hero-widget__right-section--partial"
+    >
+      <img
+        class="hero-widget__right-section-img hidden md:block"
+        src={halongImage.src}
+        fetchpriority="high"
+        style="object-fit:cover;object-position:top right"
+        alt=""
+      /><img
+        class="hero-widget__right-section-img md:hidden"
+        src={halongImage.src}
+        fetchpriority="high"
+        style="object-fit:cover;object-position:top right"
+        alt=""
+      />
+    </div>
+  </section>
+  <div class="section-container section-container">
+    <div
+      class="rich-text__wrapper"
+      style="margin-top: 0px; padding-bottom: 0px"
+    >
+      <div class="fr-view">
+        <p class="about-body">
+          {t(currentLang, "about.body")}
+        </p>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .about-body {
+    white-space: pre-line;
+    padding: 3rem 0rem 4rem;
+  }
+</style>

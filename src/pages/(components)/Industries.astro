@@ -1,0 +1,526 @@
+---
+import { t, type Lang, getTranslations } from "@/i18n";
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const base = (l: Lang, slug: string) => `/${l}/${slug}`;
+
+type Industry = {
+  slug: string;
+  title: string;
+};
+
+type IndustriesDict = {
+  industries?: {
+    items?: Industry[];
+  };
+};
+
+const dict = getTranslations(lang) as IndustriesDict;
+const industries = dict.industries?.items ?? [];
+---
+
+<div
+  id="industries"
+  class="relative theme--dark"
+  style="margin-top:0px;padding-bottom:20px"
+  data-reactroot=""
+>
+  <div class="tiled-link-section" style="pointer-events: auto;">
+    <h2 class="tiled-link-section__title">{t(lang, "nav.industries")}</h2>
+    <div class="tiled-link-section__carousel-container">
+      <div class="diagonal-widget-background">
+        <div class="flex items-center">
+          <button
+            class="swiper-btn__rounded opacity-0"
+            aria-label="Previous button"
+          >
+            <svg
+              width="40"
+              height="40"
+              viewBox="0 0 40 40"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              class="swiper-btn__rounded-icon"
+            >
+              <rect
+                x="1"
+                y="1"
+                width="38"
+                height="38"
+                rx="19"
+                stroke="#5B6E7F"
+                stroke-width="2"
+              />
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M20 22.7092L26.532 16.5L28 17.8954L20 25.5L12 17.8954L13.468 16.5L20 22.7092Z"
+                fill="#5B6E7F"
+              />
+            </svg>
+          </button>
+
+          <div class="flex w-full flex-col">
+            <div
+              class="swiper swiper-initialized swiper-horizontal swiper-pointer-events h-full infinity-swiper swiper-backface-hidden"
+              dir="ltr"
+            >
+              <div
+                class="swiper-wrapper"
+                style="transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"
+              >
+                {industries.map((item) => (
+                  <div
+                    class="swiper-slide h-auto w-full min-w-[240px] max-w-xs"
+                    style="margin-right: 16px;"
+                  >
+                    <a
+                      href={base(lang, item.slug)}
+                      class="animated-card cursor-pointer"
+                      style="min-height: auto;"
+                    >
+                      <div class="animated-card__content">
+                        <div class="animated-card__details">
+                          <div class="animated-card__details-animated">
+                            <div class="tiled-link-card">
+                              <div class="tiled-link-card__icon-section"></div>
+                              <h3 class="tiled-link-card__title">
+                                {item.title}
+                              </h3>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="animated-card__read-more-section"><div class="animated-card__read-more-link"><span class="animated-card__read-more-text">{t(lang, "read-more")}</span><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" aria-hidden="true" class="animated-card__read-more-icon" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.28 11.47a.75.75 0 010 1.06l-7.5 7.5a.75.75 0 01-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 011.06-1.06l7.5 7.5z" clip-rule="evenodd"></path></svg></div></div>
+                    </a>
+                  </div>
+                ))}
+              </div>
+
+              <div
+                class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal"
+                role="tablist"
+              >
+                <button
+                  class="swiper-pagination-bullet swiper-pagination-bullet-active"
+                  role="tab"
+                  aria-label="Go to slide 1"
+                ></button>
+                <button
+                  class="swiper-pagination-bullet"
+                  role="tab"
+                  aria-label="Go to slide 2"
+                ></button>
+                <button
+                  class="swiper-pagination-bullet"
+                  role="tab"
+                  aria-label="Go to slide 3"
+                ></button>
+              </div>
+            </div>
+          </div>
+
+          <button
+            class="swiper-btn__rounded swiper-btn__rounded--next opacity-0"
+            aria-label="Next button"
+          >
+            <svg
+              width="40"
+              height="40"
+              viewBox="0 0 40 40"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              class="swiper-btn__rounded-icon"
+            >
+              <rect
+                x="1"
+                y="1"
+                width="38"
+                height="38"
+                rx="19"
+                stroke="#5B6E7F"
+                stroke-width="2"
+              />
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M20 22.7092L26.532 16.5L28 17.8954L20 25.5L12 17.8954L13.468 16.5L20 22.7092Z"
+                fill="#5B6E7F"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  if (typeof window !== "undefined") {
+    window.addEventListener("DOMContentLoaded", () => {
+      // Mobile / tablet: dùng scroll native, không chạy logic slider desktop
+      const isSmallScreen = window.matchMedia("(max-width: 976px)").matches;
+      if (isSmallScreen) return;
+
+      const section = document.getElementById("industries");
+      if (!section) return;
+
+      const swiper = section.querySelector(".swiper");
+      const wrapper = swiper?.querySelector(".swiper-wrapper");
+      const slides = wrapper ? Array.from(wrapper.children) : [];
+      if (!swiper || !wrapper || !slides.length) return;
+
+      const swiperEl = swiper as HTMLElement;
+      const wrapperEl = wrapper as HTMLElement;
+
+      const prevBtn = section.querySelector(
+        ".swiper-btn__rounded:not(.swiper-btn__rounded--next)",
+      );
+      const nextBtn = section.querySelector(".swiper-btn__rounded--next");
+      const pagination = section.querySelector(".swiper-pagination");
+
+      let current = 0;
+      let slideWidth = 0;
+      let canSlide = false;
+      let visibleCount = 1;
+      let maxIndex = 0;
+      const spaceBetween = 16;
+      let isDragging = false;
+      let dragStartX = 0;
+      let dragStartOffset = 0;
+      let dragOffset = 0;
+
+      function measure() {
+        if (!slides.length) return;
+        const firstSlide = slides[0] as HTMLElement;
+        const rect = firstSlide.getBoundingClientRect();
+        slideWidth = rect.width + spaceBetween;
+
+        const visibleWidth = swiperEl.getBoundingClientRect().width;
+        const totalWidth = slideWidth * slides.length;
+
+        visibleCount = Math.max(1, Math.floor(visibleWidth / slideWidth));
+
+        const hiddenCount = Math.max(0, slides.length - visibleCount);
+        maxIndex = hiddenCount;
+        canSlide = hiddenCount > 0;
+
+        if (!canSlide) current = 0;
+
+        buildPagination();
+        update(false);
+      }
+
+      function update(animate = true) {
+        if (!slideWidth) return;
+
+        const totalWidth = slideWidth * slides.length;
+        const visibleWidth = swiperEl.getBoundingClientRect().width;
+        const maxOffset = Math.max(0, totalWidth - visibleWidth);
+        const rawOffset = current * slideWidth;
+        const clampedOffset = Math.min(rawOffset, maxOffset);
+
+        if (animate) {
+          wrapperEl.style.transitionDuration = "300ms";
+        } else {
+          wrapperEl.style.transitionDuration = "0ms";
+        }
+
+        const offset = canSlide ? -clampedOffset : 0;
+        wrapperEl.style.transform = `translate3d(${offset}px, 0, 0)`;
+
+        if (pagination) {
+          const bullets = Array.from(pagination.children);
+          bullets.forEach((el, index) => {
+            el.classList.toggle(
+              "swiper-pagination-bullet-active",
+              canSlide && current === index,
+            );
+          });
+        }
+
+        const hideArrows = !canSlide || slides.length <= visibleCount;
+        if (prevBtn) {
+          prevBtn.classList.toggle("opacity-0", hideArrows || current === 0);
+        }
+        if (nextBtn) {
+          nextBtn.classList.toggle(
+            "opacity-0",
+            hideArrows || current === maxIndex,
+          );
+        }
+      }
+
+      function buildPagination() {
+        if (!pagination) return;
+        pagination.innerHTML = "";
+
+        if (!canSlide || maxIndex <= 0) return;
+
+        for (let i = 0; i <= maxIndex; i++) {
+          const btn = document.createElement("button");
+          btn.type = "button";
+          btn.className = "swiper-pagination-bullet";
+          btn.setAttribute("role", "tab");
+          btn.setAttribute("aria-label", `Go to slide ${i + 1}`);
+          btn.addEventListener("click", () => {
+            if (!canSlide) return;
+            current = i;
+            update();
+          });
+          pagination.appendChild(btn);
+        }
+      }
+
+      prevBtn?.addEventListener("click", () => {
+        if (!canSlide || current <= 0) return;
+        current -= 1;
+        update();
+      });
+
+      nextBtn?.addEventListener("click", () => {
+        if (!canSlide || current >= maxIndex) return;
+        current += 1;
+        update();
+      });
+
+      // Drag desktop
+      const onDragStart = (event: MouseEvent | TouchEvent) => {
+        if (!canSlide) return;
+        isDragging = true;
+        wrapperEl.style.transitionDuration = "0ms";
+        dragStartX =
+          "touches" in event ? event.touches[0].clientX : event.clientX;
+
+        const totalWidth = slideWidth * slides.length;
+        const visibleWidth = swiperEl.getBoundingClientRect().width;
+        const maxOffset = Math.max(0, totalWidth - visibleWidth);
+        const rawOffset = current * slideWidth;
+        dragStartOffset = Math.min(rawOffset, maxOffset);
+        dragOffset = dragStartOffset;
+      };
+
+      const onDragMove = (event: MouseEvent | TouchEvent) => {
+        if (!isDragging || !canSlide) return;
+        const clientX =
+          "touches" in event ? event.touches[0].clientX : event.clientX;
+        const delta = clientX - dragStartX;
+
+        const totalWidth = slideWidth * slides.length;
+        const visibleWidth = swiperEl.getBoundingClientRect().width;
+        const maxOffset = Math.max(0, totalWidth - visibleWidth);
+
+        dragOffset = Math.max(0, Math.min(maxOffset, dragStartOffset - delta));
+        wrapperEl.style.transform = `translate3d(${-dragOffset}px, 0, 0)`;
+      };
+
+      const onDragEnd = () => {
+        if (!isDragging || !canSlide) {
+          isDragging = false;
+          return;
+        }
+        isDragging = false;
+
+        const snappedIndex = Math.round(dragOffset / slideWidth);
+        current = Math.max(0, Math.min(maxIndex, snappedIndex));
+        update();
+      };
+
+      wrapperEl.addEventListener("mousedown", onDragStart);
+      wrapperEl.addEventListener("touchstart", onDragStart, { passive: true });
+      window.addEventListener("mousemove", onDragMove);
+      window.addEventListener("touchmove", onDragMove, { passive: true });
+      window.addEventListener("mouseup", onDragEnd);
+      window.addEventListener("touchend", onDragEnd);
+      window.addEventListener("touchcancel", onDragEnd);
+
+      window.addEventListener("resize", () => measure());
+      measure();
+    });
+  }
+</script>
+
+<style>
+  .elevated {
+    margin-top: 882px;
+    min-height: 882px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .elevated #mainArea {
+    margin-top: 3rem;
+  }
+
+  .tiled-link-section {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    position: relative;
+  }
+
+  .tiled-link-section,
+  .tiled-link-section__title {
+    --tw-text-opacity: 1;
+    color: rgb(51 51 51 / var(--tw-text-opacity));
+  }
+
+  .tiled-link-section__title {
+    font-size: 1.875rem;
+    line-height: 2rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    text-align: center;
+  }
+
+  @media (min-width: 976px) {
+    .tiled-link-section__title {
+      font-size: 2.25rem;
+      line-height: 2.5rem;
+      line-height: 48px;
+    }
+  }
+
+  .tiled-link-section__sub-title {
+    font-size: 1rem;
+    line-height: 1.5rem;
+    margin-top: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    text-align: center;
+    --tw-text-opacity: 1;
+    color: rgb(51 51 51 / var(--tw-text-opacity));
+  }
+
+  @media (min-width: 976px) {
+    .tiled-link-section__sub-title {
+      font-size: 22px;
+    }
+  }
+
+  .tiled-link-section__carousel-container {
+    display: flex;
+    position: relative;
+    width: 100%;
+  }
+
+  /* Mobile: enable native horizontal scroll for swiper */
+  @media (max-width: 976px) {
+    .infinity-swiper {
+      overflow-x: auto;
+      overflow-y: hidden;
+      -webkit-overflow-scrolling: touch;
+      scroll-snap-type: x mandatory;
+    }
+
+    .infinity-swiper .swiper-wrapper {
+      width: max-content;
+    }
+
+    .infinity-swiper .swiper-slide {
+      scroll-snap-align: start;
+    }
+
+    .swiper-btn__rounded,
+    .swiper-pagination {
+      display: none;
+    }
+  }
+
+  .tiled-link-section__grid-section {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    max-width: 56rem;
+    padding: 1rem;
+  }
+
+  @media (min-width: 976px) {
+    .tiled-link-section__grid-section {
+      padding: 4rem;
+    }
+  }
+
+  .tiled-link-section__see-all-btn {
+    align-items: center;
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  @media (min-width: 976px) {
+    .tiled-link-section__see-all-btn {
+      bottom: 5rem;
+      position: absolute;
+      right: 4rem;
+      z-index: 10;
+    }
+  }
+
+  .tiled-link-section__see-all-btn:where([dir="rtl"], [dir="rtl"] *) {
+    right: auto;
+  }
+
+  @media (min-width: 976px) {
+    .tiled-link-section__see-all-btn:where([dir="rtl"], [dir="rtl"] *) {
+      left: 4rem;
+    }
+
+    .tiled-link-section__see-all-btn--grid {
+      bottom: 1.5rem;
+    }
+  }
+
+  .tiled-link-section__skeleton {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    display: flex;
+    --tw-bg-opacity: 1;
+    background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+    --tw-shadow: 0 16px 80px #5b6e7f40;
+    --tw-shadow-colored: 0 16px 80px var(--tw-shadow-color);
+    box-shadow:
+      var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000),
+      var(--tw-shadow);
+  }
+
+  .tiled-link-section__skeleton-container {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    width: 100%;
+  }
+
+  .tiled-link-section__skeleton-icon {
+    height: 48px;
+    width: 48px;
+    --tw-bg-opacity: 1;
+    background-color: rgb(242 242 242 / var(--tw-bg-opacity));
+  }
+
+  .tiled-link-section__skeleton-icon-container {
+    display: flex;
+    justify-content: flex-end;
+    margin: 2rem;
+  }
+
+  .tiled-link-section__skeleton-content-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+  }
+
+  .tiled-link-section__skeleton-item {
+    height: 20px;
+    --tw-bg-opacity: 1;
+    background-color: rgb(242 242 242 / var(--tw-bg-opacity));
+  }
+
+  .tiled-link-section:hover .swiper-btn__rounded,
+  .tiled-link-section:hover .swiper-btn__rounded--next {
+    opacity: 0.6;
+  }
+</style>

@@ -1,0 +1,20 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { t, type Lang, LOCALES, DEFAULT_LOCALE } from "@/i18n";
+import Hero from "@/pages/(components)/Hero.astro";
+import Services from "@/pages/(components)/Services.astro";
+import Industries from "@/pages/(components)/Industries.astro";
+
+export function getStaticPaths() {
+  return LOCALES.map((lang) => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params;
+const currentLang = (lang ?? DEFAULT_LOCALE) as Lang;
+---
+
+<Layout lang={currentLang} title="Home - NHC" description="Home - NHC">
+  <Hero lang={currentLang} />
+  <Services lang={currentLang} />
+  <Industries lang={currentLang} />
+</Layout>
