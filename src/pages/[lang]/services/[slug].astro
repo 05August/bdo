@@ -9,10 +9,18 @@ import taxServicesImage from "@/assets/images/service-3.png";
 import advisoryServicesImage from "@/assets/images/service-4.png";
 import legalServicesImage from "@/assets/images/service-5.png";
 
+const base = (l: Lang, path = "") => (path ? `/${l}/${path}` : `/${l}`);
+
 type Service = {
   slug: string;
   title: string;
   description: string;
+};
+
+type KeyContact = {
+  image: string;
+  name: Record<Lang, string>;
+  role: Record<Lang, string>;
 };
 
 export function getStaticPaths() {
@@ -64,6 +72,48 @@ const serviceImages = [
 const serviceImage = serviceImages.find(
   (item) => item.slug === fullSlug,
 )?.image;
+
+const otherServices = allServices.filter((item) => item.slug !== fullSlug);
+
+const keyContactsMap: Record<string, KeyContact[]> = {
+  "services/audit-and-assurance": [
+    {
+      image: "https://placehold.co/200",
+      name: {
+        vi: "Jeffrey Ong",
+        en: "Jeffrey Ong",
+      },
+      role: {
+        vi: "Partner, Trưởng Dịch vụ Kiểm toán và Đảm bảo",
+        en: "Partner, Head of Audit & Assurance",
+      },
+    },
+    {
+      image: "https://placehold.co/200",
+      name: {
+        vi: "Nguyễn Thị Thanh",
+        en: "Nguyen Thi Thanh",
+      },
+      role: {
+        vi: "Partner, Dịch vụ Kiểm toán và Đảm bảo",
+        en: "Partner, Audit & Assurance",
+      },
+    },
+    {
+      image: "https://placehold.co/200",
+      name: {
+        vi: "Phạm Tiến Hùng",
+        en: "Pham Tien Hung",
+      },
+      role: {
+        vi: "Partner, Dịch vụ Kiểm toán và Đảm bảo",
+        en: "Partner, Audit & Assurance",
+      },
+    },
+  ],
+};
+
+const keyContacts = keyContactsMap[fullSlug] ?? keyContactsMap["services/audit-and-assurance"];
 ---
 
 <Layout lang={currentLang} title={pageTitle} description={service.description}>
@@ -93,48 +143,128 @@ const serviceImage = serviceImages.find(
       />
     </div>
   </section>
-  <section class="service-detail">
-    <div class="service-detail__container">
-      <h1 class="service-detail__title">{service.title}</h1>
-      <p class="service-detail__description">
-        {service.description}
-      </p>
+
+  <div class="service-wrapper">
+    <div class="service-wrapper-content">
+      <main>
+        <div>
+          <section class="service-content" data-reactroot="">
+            <h2 class="service-content-title">
+              {service.title}
+            </h2><div class="service-content-body">
+              <content
+                ><webpart id="etw;530329cc-0696-4e6e-b2d2-f536cafaa0c0">
+                  <p>
+                    {service.description}
+                  </p>
+                </webpart></content
+              >
+            </div>
+          </section>
+        </div>
+
+        <div></div>
+      </main>
+      <aside>
+        <div id="react_0HNJL5FLCH0PQ">
+          <div class="sidebox-navigation" data-reactroot="">
+            <nav>
+              <ul class="sidebox-navigation-links">
+                {
+                  otherServices.map((item) => (
+                    <li class="sidebox-navigation-links__item">
+                      <a
+                        role="button"
+                        class="btn btn--tertiary normal-case"
+                        href={base(currentLang, item.slug)}
+                        target="_self"
+                        title=""
+                      >
+                        <span class="btn-text animated-link">
+                          <span class="hover-underline">{item.title}</span>
+                        </span>
+                      </a>
+                    </li>
+                  ))
+                }
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </aside>
     </div>
-  </section>
+
+    {
+      keyContacts.length > 0 && (
+        <div>
+          <div>
+            <div
+              class="relative key-contacts"
+              style="margin-top:20px;padding:16px"
+            >
+              <div class="key-contacts__cards">
+                {keyContacts.map((person) => (
+                  <article class="person-card">
+                    <img
+                      class="person-card__teaser"
+                      src={person.image}
+                      alt={person.name[currentLang]}
+                    />
+                    <div class="person-card__details">
+                      <div>
+                        <p class="person-card__details-title">
+                          {person.name[currentLang]}
+                        </p>
+                        <div class="person-card__details-subtitle">
+                          {person.role[currentLang]}
+                        </div>
+                      </div>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      )
+    }
+
+    <div>
+      <div class="relative">
+        <div class="tiled-link-section" style="pointer-events: auto;">
+          <div class="tiled-link-section__carousel-container">
+            <div class="diagonal-widget-background">
+              <div class="tiled-link-section__grid-section">
+                {
+                  otherServices.map((item) => (
+                    <a
+                      href={base(currentLang, item.slug)}
+                      class="animated-card cursor-pointer"
+                      style="min-height: auto;"
+                    >
+                      <div class="animated-card__content">
+                        <div class="animated-card__details">
+                          <div class="animated-card__details-animated">
+                            <div class="tiled-link-card">
+                              <div class="tiled-link-card__icon-section" />
+                              <h3 class="tiled-link-card__title">
+                                {item.title}
+                              </h3>
+                              <div class="tiled-link-card__description">
+                                {item.description}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </a>
+                  ))
+                }
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </Layout>
-
-<style>
-  .service-detail {
-    padding: 3rem 1.5rem;
-  }
-
-  .service-detail__container {
-    max-width: 960px;
-    margin: 0 auto;
-  }
-
-  .service-detail__title {
-    font-size: 2rem;
-    line-height: 2.5rem;
-    margin-bottom: 1.5rem;
-    color: #333;
-  }
-
-  .service-detail__description {
-    font-size: 1rem;
-    line-height: 1.75rem;
-    color: #444;
-    white-space: pre-line;
-  }
-
-  @media (min-width: 976px) {
-    .service-detail {
-      padding: 4rem 2rem 5rem;
-    }
-
-    .service-detail__title {
-      font-size: 2.25rem;
-      line-height: 2.75rem;
-    }
-  }
-</style>

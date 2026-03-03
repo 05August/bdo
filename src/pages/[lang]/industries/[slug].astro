@@ -3,11 +3,26 @@ import Layout from "@/layouts/Layout.astro";
 import { type Lang, LOCALES, DEFAULT_LOCALE } from "@/i18n";
 import vi from "@/i18n/vi.json";
 import en from "@/i18n/en.json";
+import realEstateConstructionImage from "@/assets/images/construct.jpeg";
+import manufacturingImage from "@/assets/images/manufacturing.jpg";
+import consumerBusinessImage from "@/assets/images/consumer-business.jpg";
+import technologyMediaTelecomImage from "@/assets/images/bdo-global-technology.jpg";
+import professionalServicesImage from "@/assets/images/bdo-global-corporate-service.jpg";
+import foodAgriBusinessImage from "@/assets/images/food.jpg";
+import nonProfitImage from "@/assets/images/bdo-global-nonprofit.jpg";
+import naturalResourcesImage from "@/assets/images/bdo-global-mining.jpg";
+import healthcareImage from "@/assets/images/bdo-global-healthcare.jpg";
 
 type Industry = {
   slug: string;
   title: string;
   description: string;
+};
+
+type KeyContact = {
+  image: string;
+  name: Record<Lang, string>;
+  role: Record<Lang, string>;
 };
 
 export function getStaticPaths() {
@@ -33,52 +48,202 @@ const industry =
   allIndustries.find((item) => item.slug === fullSlug) ?? allIndustries[0];
 
 const pageTitle = industry ? `${industry.title} - NHC` : "Industries - NHC";
+
+const otherIndustries = allIndustries.filter((item) => item.slug !== fullSlug);
+
+const base = (l: Lang, path = "") => (path ? `/${l}/${path}` : `/${l}`);
+
+const industryImages = [
+  {
+    slug: "industries/real-estate-construction",
+    image: realEstateConstructionImage.src,
+  },
+  {
+    slug: "industries/manufacturing",
+    image: manufacturingImage.src,
+  },
+  {
+    slug: "industries/consumer-business",
+    image: consumerBusinessImage.src,
+  },
+  {
+    slug: "industries/technology-media-telecom",
+    image: technologyMediaTelecomImage.src,
+  },
+  {
+    slug: "industries/professional-services",
+    image: professionalServicesImage.src,
+  },
+  {
+    slug: "industries/food-agri-business",
+    image: foodAgriBusinessImage.src,
+  },
+  {
+    slug: "industries/non-profit",
+    image: nonProfitImage.src,
+  },
+  {
+    slug: "industries/natural-resources",
+    image: naturalResourcesImage.src,
+  },
+  {
+    slug: "industries/healthcare",
+    image: healthcareImage.src,
+  },
+];
+
+const industryImage = industryImages.find(
+  (item) => item.slug === fullSlug,
+)?.image;
+const keyContactsMap: Record<string, KeyContact[]> = {
+  "industries/natural-resources": [
+    {
+      image: "https://placehold.co/200",
+      name: {
+        vi: "Jeffrey Ong",
+        en: "Jeffrey Ong",
+      },
+      role: {
+        vi: "Partner, Trưởng Dịch vụ Kiểm toán và Đảm bảo",
+        en: "Partner, Head of Audit & Assurance",
+      },
+    },
+    {
+      image: "https://placehold.co/200",
+      name: {
+        vi: "Nguyễn Thị Thanh",
+        en: "Nguyen Thi Thanh",
+      },
+      role: {
+        vi: "Partner, Dịch vụ Kiểm toán và Đảm bảo",
+        en: "Partner, Audit & Assurance",
+      },
+    },
+    {
+      image: "https://placehold.co/200",
+      name: {
+        vi: "Phạm Tiến Hùng",
+        en: "Pham Tien Hung",
+      },
+      role: {
+        vi: "Partner, Dịch vụ Kiểm toán và Đảm bảo",
+        en: "Partner, Audit & Assurance",
+      },
+    },
+  ],
+};
+
+const keyContacts =
+  keyContactsMap[fullSlug] ?? keyContactsMap["industries/natural-resources"];
 ---
 
 <Layout lang={currentLang} title={pageTitle} description={industry.description}>
-  <section class="industry-detail">
-    <div class="industry-detail__container">
-      <h1 class="industry-detail__title">{industry.title}</h1>
-      <p class="industry-detail__description">
-        {industry.description}
-      </p>
+  <section class="hero-widget hero-widget--hero hero-widget--partial">
+    <div class="hero-widget__gradient-bg hero-widget__gradient-bg--partial">
+    </div><div class="hero-widget__left-section">
+      <div class="hero-widget__left-section-white-angle-bg"></div><h1
+        class="hero-widget__left-section-title"
+      >
+        {industry.title}
+      </h1>
+    </div><div
+      class="hero-widget__right-section hero-widget__right-section--partial"
+    >
+      <img
+        class="hero-widget__right-section-img hidden md:block"
+        src={industryImage}
+        fetchpriority="high"
+        style="object-fit:cover;object-position:top right"
+        alt={industry.title}
+      /><img
+        class="hero-widget__right-section-img md:hidden"
+        src={industryImage}
+        fetchpriority="high"
+        style="object-fit:cover;object-position:top right"
+        alt={industry.title}
+      />
     </div>
   </section>
+
+  <div class="industry-primary">
+    <main class="industry-primary__container lg:w-3/5">
+      <div class="industry-primary__content">
+        <h2 class="industry-primary__title">{industry.title}</h2><div
+          class="industry-primary__description"
+        >
+          <p>{industry.description}</p>
+        </div>
+      </div>
+    </main><aside>
+      <div class="sidebox-navigation sm:items-stretch">
+        <h3 class="sidebox-navigation-title">{industry.title}</h3><nav>
+          <ul class="sidebox-navigation-links">
+            {
+              otherIndustries.map((item) => (
+                <li class="sidebox-navigation-links__item">
+                  <a
+                    role="button"
+                    class="btn btn--tertiary normal-case"
+                    href={base(currentLang, item.slug)}
+                    target="_self"
+                    title=""
+                  >
+                    <>
+                      <span class="btn-text animated-link">
+                        <span class="hover-underline">{item.title}</span>
+                      </span>
+                      <svg
+                        class="btn-chevron"
+                        xmlns="http://www.w3.org/2000/svg"
+                        height="24px"
+                        viewBox="0 -960 960 960"
+                        width="24px"
+                      >
+                        <path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z" />
+                      </svg>
+                    </>
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </nav>
+      </div>
+    </aside>
+  </div>
+
+  {
+    keyContacts.length > 0 && (
+      <div>
+        <div>
+          <div
+            class="relative key-contacts"
+            style="margin-top:20px;padding:16px"
+          >
+            <div class="key-contacts__cards">
+              {keyContacts.map((person) => (
+                <article class="person-card">
+                  <img
+                    class="person-card__teaser"
+                    src={person.image}
+                    alt={person.name[currentLang]}
+                  />
+                  <div class="person-card__details">
+                    <div>
+                      <p class="person-card__details-title">
+                        {person.name[currentLang]}
+                      </p>
+                      <div class="person-card__details-subtitle">
+                        {person.role[currentLang]}
+                      </div>
+                    </div>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+  }
 </Layout>
-
-<style>
-  .industry-detail {
-    padding: 3rem 1.5rem;
-  }
-
-  .industry-detail__container {
-    max-width: 960px;
-    margin: 0 auto;
-  }
-
-  .industry-detail__title {
-    font-size: 2rem;
-    line-height: 2.5rem;
-    margin-bottom: 1.5rem;
-    color: #333;
-  }
-
-  .industry-detail__description {
-    font-size: 1rem;
-    line-height: 1.75rem;
-    color: #444;
-    white-space: pre-line;
-  }
-
-  @media (min-width: 976px) {
-    .industry-detail {
-      padding: 4rem 2rem 5rem;
-    }
-
-    .industry-detail__title {
-      font-size: 2.25rem;
-      line-height: 2.75rem;
-    }
-  }
-</style>
-
