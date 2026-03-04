@@ -11,18 +11,18 @@
     "email-sign-up": "Email Sign Up",
     "subscribe": "Subscribe",
     "copyright": "Copyright © 2026. See Terms &amp; Conditions for more information.",
-    "subscribe-content": "At BDO, we believe exceptional client service begins with building exceptional relationships. Sign up to receive our latest updates."
+    "subscribe-content": "At NHC, we believe exceptional client service begins with building exceptional relationships. Sign up to receive our latest updates."
   },
   "home": {
     "hero": {
-      "title": "We're bringing in BDO, The partner's already on it.",
-      "description": "People who know, know BDO",
+      "title": "We're bringing in NHC, The partner's already on it.",
+      "description": "People who know, know NHC",
       "button": "Read More"
     }
   },
   "about": {
     "heroTitle": "NHC in Viet Nam",
-    "body": "BDO in Viet Nam consists of member firms of BDO International – the world’s fifth largest network of professional services firms, providing audit, advisory and tax services to clients ranging from long-established multinational groups to fast-growing organisations, both listed and privately owned. With 1,800 offices in 166 countries, BDO International has more than 119,611 professionals worldwide.\n\nOn 1 October 2012, more than 150 professionals from several firms in Viet Nam joined to form the new BDO firm in Viet Nam with offices in Hanoi and Ho Chi Minh City. This marked a comprehensive expansion of the services BDO provides in Viet Nam, including audit, tax, accounting, business services & outsourcing, advisory and legal services delivered by a highly regarded team of experts in the local market.\n\nWe think globally and act locally. Every market has its own characteristics, and businesses operating there need advice from local professionals who deeply understand the business environment and local culture to help them operate more effectively. Leveraging the knowledge and extensive experience of other member firms in BDO’s global network, we work alongside businesses, delivering tailored solutions that meet their needs across multiple sectors and markets."
+    "body": "NHC Co., Ltd. is a leading provider of professional financial consulting and accounting solutions. With a team of highly experienced experts, we are committed to partnering with businesses to optimize financial structures, ensure full tax compliance, and minimize operational risks. At NHC, we do more than just provide services; we deliver strategic insights that empower our clients to focus on their core growth and sustainable success in the Vietnamese market."
   },
   "services": {
     "items": [
@@ -34,7 +34,7 @@
       {
         "slug": "services/business-services-outsourcing",
         "title": "Business Services & Outsourcing (BSO)",
-        "description": "BDO’s Business Services & Outsourcing team provides a wide range of services including accounting, advisory and compliance support to help organizations grow and respond to changing business needs in Viet Nam and around the world."
+        "description": "NHC’s Business Services & Outsourcing team provides a wide range of services including accounting, advisory and compliance support to help organizations grow and respond to changing business needs in Viet Nam and around the world."
       },
       {
         "slug": "services/tax-services",
@@ -44,12 +44,12 @@
       {
         "slug": "services/advisory-services",
         "title": "Advisory Services",
-        "description": "With a multi-disciplinary advisory team drawn from diverse backgrounds, BDO delivers tailored solutions for each client. Our advisory offering ranges from transaction services and corporate finance to risk advisory, restructuring and technology consulting, helping you navigate challenges and seize opportunities of any size."
+        "description": "With a multi-disciplinary advisory team drawn from diverse backgrounds, NHC delivers tailored solutions for each client. Our advisory offering ranges from transaction services and corporate finance to risk advisory, restructuring and technology consulting, helping you navigate challenges and seize opportunities of any size."
       },
       {
         "slug": "services/legal-services",
         "title": "Legal Services",
-        "description": "BDO Legal Vietnam is an independent law firm within the BDO network in Viet Nam, providing professional legal services to investors and businesses across a wide range of corporate and commercial matters."
+        "description": "NHC Co., Ltd. provides a wide range of professional legal services for clients engaging in investment and business activities in Vietnam."
       }
     ]
   },
@@ -104,7 +104,7 @@
   },
   "contact": {
     "heroTitle": "Contact",
-    "body": "BDO in Ho Chi Minh City:\n11th Floor, 60 Nguyen Dinh Chieu Street, District 1, Ho Chi Minh City, Viet Nam\nOffice: +84 (0) 28 39110033\nFax: +84 (0) 28 39117439\nEmail: bdo@bdo.vn\n\nBDO in Hanoi:\n20th floor, ICON 4 Tower\n243A De La Thanh Street, Dong Da District, Ha Noi, Viet Nam\nOffice: +84 (0) 24 37833911/12/13\nFax: +84 (0) 24 37833914\nEmail: bdo@bdo.vn\n\nBDO Legal Vietnam LLC\nUnit 4.28, 4th Floor, 19-21 Nguyen Van Troi St.,\nPhu Nhuan District, Ho Chi Minh City,\nViet Nam\nOffice: +84 (0) 28 36227792\nFax: +84 (0) 28 36227791"
+    "body": "CÔNG TY TNHH NHC TƯ VẤN DỊCH VỤ TÀI CHÍNH VÀ KẾ TOÁN\nNhà 1, hẻm 2, ngách 22, ngõ 120, đường Kim Giang, Thành phố Hà Nội, Việt Nam\nOffice: 090 2125268 - 043 5592309"
   },
   "read-more": "Read More"
 }
